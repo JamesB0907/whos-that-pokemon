@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css'
+import PokemonImage from './components/PokemonImage';
+import AnswerButtons from './components/AnswerButtons';
 
 // TODO: Child components: PokemonImage, AnswerButton, ResultMessage
 
@@ -27,9 +29,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [score, setScore] = useState({ correct: 0, total: 0 });
 
-  useEffect(() => {
+ useEffect(() => {
     loadNewPokemon()
-  }, []);
+  }, [])
 
   async function loadNewPokemon() {
     setLoading(true);
@@ -88,7 +90,26 @@ function App() {
           <p className="loading">Loading...</p>
         ) : (
           <>
-            {/*TODO: Add PokeImage, AnswerButton, ResultMessage component*/}
+            <PokemonImage
+              src={pokemon.image}
+              name={pokemon.name}
+              revealed={revealed}
+            />
+
+            <AnswerButtons
+              choices={choices}
+              correctName={pokemon.name}
+              selected={selected}
+              revealed={revealed}
+              onGuess={handleGuess}
+            />
+            {revealed && (
+              <ResultMessage
+                correct={selected === pokemon.name}
+                pokemonName={pokemon.name}
+                onNext={loadNewPokemon}
+              />
+            )}
           </>
         )
       }
