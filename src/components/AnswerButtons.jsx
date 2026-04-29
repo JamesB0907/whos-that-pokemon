@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function AnswerButtons({ choices, correctName, selected, revealed, onGeuss }) {
+function AnswerButtons({ choices, correctName, selected, revealed, onGuess }) { //typo
 
     function getButtonClass(name) {
         if (!revealed) return 'choice-btn'
@@ -15,7 +15,7 @@ function AnswerButtons({ choices, correctName, selected, revealed, onGeuss }) {
                 <button
                     key={name}
                     className={getButtonClass(name)}
-                    onClick={() => onGeuss(name)}
+                    onClick={() => onGuess(name)} //typo
                     disabled={revealed}
                 >
                     {name.charAt(0).toUpperCase() + name.slice(1)}

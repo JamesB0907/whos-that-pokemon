@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css'
 import PokemonImage from './components/PokemonImage';
 import AnswerButtons from './components/AnswerButtons';
+import ResultMessage from './components/ResultMessage';
 
 // TODO: Child components: PokemonImage, AnswerButton, ResultMessage
 
